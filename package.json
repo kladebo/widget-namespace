@@ -1,31 +1,33 @@
 {
-    "name": "widgets",
-    "version": "0.0.3",
-    "description": "widget creation",
-    "main": "app.js",
-    "keywords": [
-        "widget-select namespace"
-    ],
-    "author": {
-        "name": "Klaas de Boer",
-        "email": "kladebo@xs4all.nl",
-        "url": "http://kladebo.home.xs4all.nl"
-    },
-    "scripts": {
-        "test": "?"
-    },
-    "license": "ISC",
-    "devDependencies": {
-        "grunt": "^0.4.5",
-        "grunt-contrib-concat": "^1.0.0",
-        "grunt-contrib-connect": "^1.0.0",
-        "grunt-contrib-cssmin": "^1.0.0",
-        "grunt-contrib-jshint": "^1.0.0",
-        "grunt-contrib-less": "^1.2.0",
-        "grunt-contrib-qunit": "^1.1.0",
-        "grunt-contrib-uglify": "^1.0.0",
-        "grunt-protractor-runner": "^3.0.0",
-        "grunt-protractor-webdriver": "^0.2.5",
-        "protractor": "^3.1.1"
-    }
+  "name": "widgets",
+  "version": "0.0.3",
+  "description": "widget creation",
+  "main": "app.js",
+  "keywords": [
+    "widget-select namespace"
+  ],
+  "author": {
+    "name": "Klaas de Boer",
+    "email": "kladebo@xs4all.nl",
+    "url": "http://kladebo.home.xs4all.nl"
+  },
+  "scripts": {
+    "test": "?"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-connect": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-less": "^1.2.0",
+    "grunt-contrib-qunit": "^1.1.0",
+    "grunt-contrib-uglify": "^1.0.0",
+    "grunt-protractor-runner": "^3.0.0",
+    "grunt-protractor-webdriver": "^0.2.5",
+    "protractor": "^3.1.1"
+  }
 }

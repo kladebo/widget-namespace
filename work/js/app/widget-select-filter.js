@@ -1,3 +1,4 @@
+/*global MYAPPLICATION: false */
 (function (NS) {
     // create namespace for widget
     'use strict';
@@ -61,4 +62,4 @@
 //    WIDGETS.Select = WIDGETS.Select || {};
     WIDGETS.SelectFilter = Filter;
 
-})(MYAPPLICATION);
+}(MYAPPLICATION));

@@ -1,8 +1,8 @@
+/*global MYAPPLICATION: false */
 (function (NS) {
-    var WIDGETS = NS.createNS("MYAPPLICATION.MODEL.WIDGETS");
-
-    //function TextBox() {}
-    var TextBox = function () {};
+    'use strict';
+    var WIDGETS = NS.createNS("MYAPPLICATION.MODEL.WIDGETS"),
+        TextBox = function () {};
 
     TextBox.prototype.init = function (obj) {
         this.native = obj;
@@ -24,4 +24,4 @@
 
     WIDGETS.TextBox = TextBox;
 
-})(MYAPPLICATION);
+}(MYAPPLICATION));

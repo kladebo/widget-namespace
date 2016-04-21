@@ -1,5 +1,5 @@
+/*global MYAPPLICATION: false */
 (function (NS) {
-    // create namespace for widget
     'use strict';
     var Select,
         widgetClicked,
@@ -257,4 +257,4 @@
 
     WIDGETS.Select = Select;
 
-})(MYAPPLICATION);
+}(MYAPPLICATION));

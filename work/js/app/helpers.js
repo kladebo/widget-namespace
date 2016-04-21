@@ -1,3 +1,4 @@
+/*global MYAPPLICATION: false */
 (function (NS) {
     // create namespace for widget
     'use strict';
@@ -79,7 +80,7 @@
                         obj.scrollTop -= scrollStep;
                         setTimeout(scroll, 30);
                     }
-                })();
+                }());
             } else if ((itemPos.toParentTop - scrolled + itemPos.height) >= boxHeight - itemPos.height) {
                 // scroll down
                 from = obj.scrollTop;
@@ -93,9 +94,9 @@
                         obj.scrollTop += scrollStep;
                         setTimeout(scroll, 30);
                     }
-                })();
+                }());
             }
         }
     };
 
-})(MYAPPLICATION);
+}(MYAPPLICATION));

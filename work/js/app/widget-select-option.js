@@ -1,10 +1,11 @@
-
+/*global MYAPPLICATION: false */
 (function (NS) {
-    // create namespace for widget
     'use strict';
     var Option,
         HELPER = NS.MODEL.HELPERS,
         WIDGETS = NS.createNS("MYAPPLICATION.MODEL.WIDGETS");
+
+
 
     Option = function () {};
 
@@ -19,7 +20,20 @@
 
     Option.prototype.draw = function () {
         var widget = this.widget,
-            optionId = this.itemId;
+            optionId = this.itemId,
+            addHighlight,
+            removeHighlight;
+
+
+        addHighlight = function () {
+            widget.highlightId = optionId;
+            WIDGETS.Select.optionAddHighlight();
+        };
+
+        removeHighlight = function () {
+            widget.highlightId = optionId;
+            WIDGETS.Select.optionRemoveHighlight();
+        };
 
         widget.guiDropDown.appendChild(this.item);
 
@@ -56,17 +70,9 @@
             removeHighlight();
         });
 
-        var addHighlight = function () {
-            widget.highlightId = optionId;
-            WIDGETS.Select.optionAddHighlight();
-        };
 
-        var removeHighlight = function () {
-            widget.highlightId = optionId;
-            WIDGETS.Select.optionRemoveHighlight();
-        };
     };
 
     WIDGETS.SelectOption = Option;
 
-})(MYAPPLICATION);
+}(MYAPPLICATION));

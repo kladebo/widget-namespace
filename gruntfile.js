@@ -1,10 +1,10 @@
 module.exports = function (grunt) {
-
+    'use strict';
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         jshint: {
-            files: ['Gruntfile.js', 'work/js/app.js','work/js/app/*'],
+            files: ['gruntfile.js', 'work/js/app.js', 'work/js/app/*'],
             options: {
                 // options here to override JSHint defaults
                 globals: {
@@ -29,17 +29,17 @@ module.exports = function (grunt) {
         concat: {
             options: {
                 // define a string to put between each file in the concatenated output
-                separator: ';',
+                separator: ';'
             },
             dist: {
                 // the files to concatenate
                 src: ['work/js/app/widget-*.js'],
                 // the location of the resulting JS file
-                dest: 'work/build/js/<%= pkg.name %>.js'
+                dest: 'work/build/js/app/<%= pkg.name %>.js'
             }
         },
         uglify: {
-            my_target: {
+            appjs: {
                 options: {
                     // mangle: false,
                     preserveComments: false,
@@ -47,10 +47,11 @@ module.exports = function (grunt) {
                 },
                 files: {
                     'work/build/js/app/main.min.js': ['work/js/app/main.js'],
-                    'work/build/js/app/helpers.min.js': ['work/js/app/helpers.js']
+                    'work/build/js/app/helpers.min.js': ['work/js/app/helpers.js'],
+                    'work/build/js/app.min.js': ['work/js/app.js']
                 }
             },
-            my_target2: {
+            widgetjs: {
                 options: {
                     preserveComments: false,
                     banner: '/*! <%= pkg.description %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
@@ -64,7 +65,7 @@ module.exports = function (grunt) {
         less: {
             development: {
                 files: {
-                    'work/build/css/app/widget-select.css': ['work/css/widget-select.less']
+                    'work/build/css/app/widget-select.css': ['work/less/widget-select.less']
                 }
             }
         },
@@ -73,16 +74,16 @@ module.exports = function (grunt) {
                 //restructure: true,
                 //aggressiveMerging: false,
                 benchmark: true,
-                keepBreaks: true,
-                //                mediaMerging : true,
-                //mergeMediaQueries: true,
-                //removeDuplicateMediaQueries: true,
-                //shorthandCompacting: false,
-                //roundingPrecision: -1
+                keepBreaks: true
+                    //                mediaMerging : true,
+                    //mergeMediaQueries: true,
+                    //removeDuplicateMediaQueries: true,
+                    //shorthandCompacting: false,
+                    //roundingPrecision: -1
             },
             target: {
                 files: {
-                    'work/build/css/app/widget-select.css': ['work/build/css/app/widget-select.css']
+                    'work/css/app/widget-select.css': ['work/build/css/app/widget-select.css']
                 }
             }
         },
@@ -105,7 +106,7 @@ module.exports = function (grunt) {
                 options: {
 
                     args: {
-                        browser: 'chrome',
+                        browser: 'chrome'
                     } // Target-specific arguments 
                 }
             },
@@ -113,10 +114,36 @@ module.exports = function (grunt) {
                 options: {
 
                     args: {
-                        browser: 'firefox',
+                        browser: 'firefox'
                     } // Target-specific arguments 
                 }
+            }
+        },
+        clean: {
+            //folder: ['path/to/dir/'],
+            //folder_v2: ['path/to/dir/**'],
+            //contents: ['path/to/dir/*'],
+            //subfolders: ['path/to/dir/*/'],
+            //css: ['path/to/dir/*.css'],
+            //all_css: ['path/to/dir/**/*.css']
+            css: ['work/build/css/', 'work/css/app/', 'www/css/*'],
+            appjs: ['work/build/js/app/', 'www/js/app/', 'www/js/app.js'],
+            //all_css: ['path/to/dir/**/*.css']
+        },
+        copy: {
+            css: {
+                cwd: 'work/css', // set working folder / root to copy
+                src: '**/*', // copy all files and subfolders
+                dest: 'www/css', // destination folder
+                expand: true // required when using cwd
+
             },
+            appjs: {
+                cwd: 'work/build/js', // set working folder / root to copy
+                src: '**/*', // copy only root files
+                dest: 'www/js', // destination folder
+                expand: true // required when using cwd
+            }
         }
     });
 
@@ -131,11 +158,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-protractor-runner');
     grunt.loadNpmTasks('grunt-protractor-webdriver');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy'); //npm install grunt-contrib-copy --save-dev
 
     // Default task(s).
-    grunt.registerTask('code', ['jshint', 'connect', 'qunit', 'uglify']);
-    grunt.registerTask('css', ['less', 'cssmin']);
-    grunt.registerTask('klaas', ['protractor:chrome']);
-    grunt.registerTask('default', ['connect', 'qunit']);
+    grunt.registerTask('code', ['jshint', 'connect', 'qunit', 'clean:appjs', 'uglify', 'copy:appjs']);
+    grunt.registerTask('css', ['clean:css', 'less', 'cssmin', 'copy:css']);
+    grunt.registerTask('e2e', ['protractor:chrome']);
+    grunt.registerTask('default', ['code', 'css', 'e2e']);
 
 };
