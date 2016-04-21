@@ -4,7 +4,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         jshint: {
-            files: ['Gruntfile.js', 'js/app.js', 'js/app/main.js', 'work/js/*.js'],
+            files: ['Gruntfile.js', 'work/js/app.js','work/js/app/*'],
             options: {
                 // options here to override JSHint defaults
                 globals: {
@@ -33,9 +33,9 @@ module.exports = function (grunt) {
             },
             dist: {
                 // the files to concatenate
-                src: ['work/js/widget-*.js'],
+                src: ['work/js/app/widget-*.js'],
                 // the location of the resulting JS file
-                dest: 'work/js-concat/<%= pkg.name %>.js'
+                dest: 'work/build/js/<%= pkg.name %>.js'
             }
         },
         uglify: {
@@ -46,8 +46,8 @@ module.exports = function (grunt) {
                     banner: '/*! main <%= grunt.template.today("yyyy-mm-dd") %> */\n'
                 },
                 files: {
-                    'js/app/main.min.js': ['work/js/main.js'],
-                    'js/app/helpers.min.js': ['work/js/helpers.js']
+                    'work/build/js/app/main.min.js': ['work/js/app/main.js'],
+                    'work/build/js/app/helpers.min.js': ['work/js/app/helpers.js']
                 }
             },
             my_target2: {
@@ -56,7 +56,7 @@ module.exports = function (grunt) {
                     banner: '/*! <%= pkg.description %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
                 },
                 files: {
-                    'js/app/<%= pkg.name %>.min.js': ['work/js/widget-*.js']
+                    'work/build/js/app/<%= pkg.name %>.min.js': ['work/js/app/widget-*.js']
 
                 }
             }
@@ -64,7 +64,7 @@ module.exports = function (grunt) {
         less: {
             development: {
                 files: {
-                    'work/css/widget-select.css': ['work/css/widget-select.less']
+                    'work/build/css/app/widget-select.css': ['work/css/widget-select.less']
                 }
             }
         },
@@ -82,7 +82,7 @@ module.exports = function (grunt) {
             },
             target: {
                 files: {
-                    'css/widget-select.css': ['work/css/widget-select.css']
+                    'work/build/css/app/widget-select.css': ['work/build/css/app/widget-select.css']
                 }
             }
         },

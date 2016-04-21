@@ -1,7 +1,7 @@
 {
-    "name": "widget-select nameSpace",
+    "name": "widgets",
     "version": "0.0.3",
-    "description": "widget-select",
+    "description": "widget creation",
     "main": "app.js",
     "keywords": [
         "widget-select namespace"
