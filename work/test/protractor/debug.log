@@ -1,0 +1,12 @@
+[0317/172333:ERROR:process_info.cc(330)] VirtualQueryEx: Toegang geweigerd. (0x5)
+[0317/172333:ERROR:process_info.cc(547)] ReadMemoryInfo failed
+[0317/172333:ERROR:process_info.cc(608)] range at 0x7773ab40, size 0x24 fully unreadable
+[0317/172333:ERROR:process_info.cc(608)] range at 0x7763bc84, size 0x12 fully unreadable
+[0317/172333:ERROR:process_info.cc(608)] range at 0x7763bc84, size 0x12 fully unreadable
+[0317/172333:ERROR:process_info.cc(608)] range at 0x7763bc84, size 0x12 fully unreadable
+[0317/172333:ERROR:process_info.cc(608)] range at 0x777384b8, size 0x18 fully unreadable
+[0317/172333:ERROR:process_info.cc(608)] range at 0x7773883c, size 0x20 fully unreadable
+[0317/172333:ERROR:process_reader_win.cc(141)] SuspendThread: Toegang geweigerd. (0x5)
+[0317/172333:ERROR:exception_snapshot_win.cc(56)] thread ID 7648 not found in process
+[0317/172333:WARNING:crash_report_exception_handler.cc(60)] ProcessSnapshotWin::InitializeException failed
+[0317/172333:ERROR:scoped_process_suspend.cc(38)] NtResumeProcess, ntstatus=-1073741558

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>widget v3 [namespace]</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="../sharedcss/normalize.min.css" />
+    <link rel="stylesheet" href="../sharedcss/main.css" />
+<!--    <link rel="stylesheet" href="../sharedcss/app.css" />-->
+    <link rel="stylesheet" href="css/widget-select.css" />
+    <link rel="stylesheet" href="../sharedcss/design.css" />
+</head>
+
+<body>
+    <section>
+        <div class="section">
+            <div id="container" class="widget-container">
+                <form id="searchform" method="" action="" class="widget-form">
+
+                    <input name="keyword" type="text" placeholder="E.g. project manager" tabindex="1">
+
+                    <select name="description[]" multiple="multiple" tabindex="2" title="Functiegebied" class="select-widget">
+                        <option>Projectmanagement</option>
+                        <option selected="selected">Sales</option>
+                        <option>Directie</option>
+                        <option selected="selected">Development</option>
+                        <option>HR</option>
+                    </select>
+
+                    <select name="level[]" multiple="multiple" tabindex="3" title="Niveau" class="select-widget">
+                        <option>Level 1</option>
+                        <option>Level 2</option>
+                        <option selected="selected">Level 3</option>
+                        <option>Level 4</option>
+                        <option selected="selected">Level 5</option>
+                        <option>Level 6</option>
+                        <option>Level 7</option>
+                        <option>Level 8</option>
+                        <option>Level 9</option>
+                        <option>Level 10</option>
+                        <option>Level 11</option>
+                        <option>Level 12</option>
+                        <option>Level 13</option>
+                        <option>Level 14</option>
+                        <option>Level 15</option>
+                    </select>
+
+                    <input name="location" type="text" placeholder="Search for location" tabindex="4">
+
+                    <select name="distance" tabindex="5" title="Afstand" class="select-widget">
+                        <option>10km</option>
+                        <option>20km</option>
+                        <option selected="selected">30km</option>
+                        <option>40km</option>
+                        <option>50km</option>
+                    </select>
+                    <button type="submit" tabindex="6" id="klaas">SEARCH</button>
+                    <div class="select-widget-filterbar"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!--
+<section>
+        <div class="section">
+            <ul class="flexy">
+                <li><img src="img/Web_Beeld_Home.png?0" /></li>
+                <li><img src="img/Web_Beeld_Home.png?1" /></li>
+                <li><img src="img/Web_Beeld_Home.png?2" /></li>
+                <li><img src="img/Web_Beeld_Home.png?3" /></li>
+                <li><img src="img/Web_Beeld_Home.png?4" /></li>
+                <li><img src="img/Web_Beeld_Home.png?5" /></li>
+                <li><img src="img/Web_Beeld_Home.png?6" /></li>
+                <li><img src="img/Web_Beeld_Home.png?6" /></li>
+                <li><img src="img/Web_Beeld_Home.png?7" /></li>
+                <li><img src="img/Web_Beeld_Home.png?8" /></li>
+                <li><img src="img/Web_Beeld_Home.png?9" /></li>
+                <li><img src="img/Web_Beeld_Home.png?10" /></li>
+                <li><img src="img/Web_Beeld_Home.png?11" /></li>
+                <li><img src="img/Web_Beeld_Home.png?12" /></li>
+                <li><img src="img/Web_Beeld_Home.png?13" /></li>
+                <li><img src="img/Web_Beeld_Home.png?14" /></li>
+                <li><img src="img/Web_Beeld_Home.png?15" /></li>
+                <li><img src="img/Web_Beeld_Home.png?16" /></li>
+                <li><img src="img/Web_Beeld_Home.png?16" /></li>
+                <li><img src="img/Web_Beeld_Home.png?17" /></li>
+                <li><img src="img/Web_Beeld_Home.png?18" /></li>
+                <li><img src="img/Web_Beeld_Home.png?19" /></li>
+                <li><img src="img/Web_Beeld_Home.png?20" /></li>
+                <li><img src="img/Web_Beeld_Home.png?21" /></li>
+                <li><img src="img/Web_Beeld_Home.png?22" /></li>
+                <li><img src="img/Web_Beeld_Home.png?23" /></li>
+                <li><img src="img/Web_Beeld_Home.png?24" /></li>
+                <li><img src="img/Web_Beeld_Home.png?25" /></li>
+                <li><img src="img/Web_Beeld_Home.png?26" /></li>
+                <li><img src="img/Web_Beeld_Home.png?26" /></li>
+                <li><img src="img/Web_Beeld_Home.png?27" /></li>
+                <li><img src="img/Web_Beeld_Home.png?28" /></li>
+                <li><img src="img/Web_Beeld_Home.png?29" /></li>
+                <li><img src="img/Web_Beeld_Home.png?30" /></li>
+                <li><img src="img/Web_Beeld_Home.png?31" /></li>
+                <li><img src="img/Web_Beeld_Home.png?32" /></li>
+                <li><img src="img/Web_Beeld_Home.png?33" /></li>
+                <li><img src="img/Web_Beeld_Home.png?34" /></li>
+                <li><img src="img/Web_Beeld_Home.png?35" /></li>
+                <li><img src="img/Web_Beeld_Home.png?36" /></li>
+                <li><img src="img/Web_Beeld_Home.png?36" /></li>
+                <li><img src="img/Web_Beeld_Home.png?37" /></li>
+                <li><img src="img/Web_Beeld_Home.png?38" /></li>
+                <li><img src="img/Web_Beeld_Home.png?39" /></li>
+                <li><img src="img/Web_Beeld_Home.png?40" /></li>
+                <li><img src="img/Web_Beeld_Home.png?41" /></li>
+                <li><img src="img/Web_Beeld_Home.png?42" /></li>
+                <li><img src="img/Web_Beeld_Home.png?43" /></li>
+                <li><img src="img/Web_Beeld_Home.png?44" /></li>
+                <li><img src="img/Web_Beeld_Home.png?45" /></li>
+                <li><img src="img/Web_Beeld_Home.png?46" /></li>
+                <li><img src="img/Web_Beeld_Home.png?46" /></li>
+                <li><img src="img/Web_Beeld_Home.png?47" /></li>
+                <li><img src="img/Web_Beeld_Home.png?48" /></li>
+                <li><img src="img/Web_Beeld_Home.png?49" /></li>
+                <li><img src="img/Web_Beeld_Home.png?50" /></li>
+                <li><img src="img/Web_Beeld_Home.png?51" /></li>
+                <li><img src="img/Web_Beeld_Home.png?52" /></li>
+                <li><img src="img/Web_Beeld_Home.png?53" /></li>
+                <li><img src="img/Web_Beeld_Home.png?54" /></li>
+                <li><img src="img/Web_Beeld_Home.png?55" /></li>
+                <li><img src="img/Web_Beeld_Home.png?56" /></li>
+                <li><img src="img/Web_Beeld_Home.png?56" /></li>
+                <li><img src="img/Web_Beeld_Home.png?57" /></li>
+                <li><img src="img/Web_Beeld_Home.png?58" /></li>
+                <li><img src="img/Web_Beeld_Home.png?59" /></li>
+                
+            </ul>
+        </div>
+    </section>-->
+
+    <!--<script src="scripts/test.js"></script>-->
+    <script src="js/app.js"></script>
+    <script src="js/app/helpers.min.js"></script>
+    <script src="js/app/test.js"></script>
+    <script src="js/app/widget-select.min.js"></script>
+<!--
+    <script src="work/js/widget-select.js"></script>
+    <script src="work/js/widget-select-option.js"></script>
+    <script src="work/js/widget-select-filter.js"></script>
+    <script src="work/js/widget-input-text.js"></script>
+-->
+    <script src="js/app/main.min.js"></script>
+</body>
+
+</html>

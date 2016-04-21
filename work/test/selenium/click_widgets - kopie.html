@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://klaas/klaas/widget_select/version03" />
+<title>click_widgets</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">first</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/klaas/widget_select/version03/</td>
+	<td></td>
+</tr>
+<!--check the first input-->
+<tr>
+	<td>assertAttribute</td>
+	<td>//input[1]@placeholder</td>
+	<td>E.g. project manager</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//input[1]@name</td>
+	<td>keyword</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//input[1]/..@class</td>
+	<td>*focus</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>//input[1]</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//input[1]/..@class</td>
+	<td>*focus</td>
+</tr>
+<!--check the first select widget including its filter-group (multiSelect)-->
+<tr>
+	<td>assertSelectedIndexes</td>
+	<td>//select[@name='description[]']</td>
+	<td>1,3</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@name='description[]']/span</td>
+	<td>Functiegebied</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//div[@name='description[]']/@class</td>
+	<td>*multiple*</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//div[@name='description[]']/ul/@class</td>
+	<td>*multiple*</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//ul[@name='description[]']@class</td>
+	<td>*hidden</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@name='description[]']/ul/li[1]</td>
+	<td>Projectmanagement</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[@name='description[]']/li[1]</td>
+	<td>Projectmanagement</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//div[@name='description[]']/ul/li[1]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//ul[@name='description[]']/li[1]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@name='description[]']/ul/li[2]</td>
+	<td>Sales</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[@name='description[]']/li[2]</td>
+	<td>Sales</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//div[@name='description[]']/ul/li[2]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//ul[@name='description[]']/li[2]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@name='description[]']/ul/li[3]</td>
+	<td>Directie</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[@name='description[]']/li[3]</td>
+	<td>Directie</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//div[@name='description[]']/ul/li[3]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//ul[@name='description[]']/li[3]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@name='description[]']/ul/li[4]</td>
+	<td>Development</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[@name='description[]']/li[4]</td>
+	<td>Development</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//div[@name='description[]']/ul/li[4]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//ul[@name='description[]']/li[4]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@name='description[]']/ul/li[5]</td>
+	<td>HR</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[@name='description[]']/li[5]</td>
+	<td>HR</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//div[@name='description[]']/ul/li[5]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//ul[@name='description[]']/li[5]@class</td>
+	<td>*active</td>
+</tr>
+<!--click around-->
+<tr>
+	<td>click</td>
+	<td>//div[@name='description[]']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//div[@name='description[]']/@class</td>
+	<td>*focus</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//div[@name='description[]']/ul/@class</td>
+	<td>*hidden</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>//div[@name='description[]']</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//div[@name='description[]']/@class</td>
+	<td>*focus</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//div[@name='description[]']/ul/@class</td>
+	<td>*hidden</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@name='description[]'] </td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//div[@name='description[]']/ul/@class</td>
+	<td>*hidden</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//div[@name='description[]']/ul/li[1]@class</td>
+	<td>*active</td>
+</tr>
+<!--click on the children-->
+<tr>
+	<td>click</td>
+	<td>//div[@name='description[]']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--multiSelect keeps submenu open after click-->
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//div[@name='description[]']/ul/@class</td>
+	<td>*hidden</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//div[@name='description[]']/ul/li[1]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//ul[@name='description[]']/li[1]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertSelectedIndexes</td>
+	<td>//select[@name='description[]']</td>
+	<td>0,1,3</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@name='description[]']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--multiSelect keeps submenu open after click-->
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//div[@name='description[]']/ul/@class</td>
+	<td>*hidden</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//ul[@name='description[]']/li[1]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertSelectedIndexes</td>
+	<td>//select[@name='description[]']</td>
+	<td>1,3</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@name='description[]']/ul/li[2]</td>
+	<td></td>
+</tr>
+<!--multiSelect keeps submenu open after click-->
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//div[@name='description[]']/ul/@class</td>
+	<td>*hidden</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//ul[@name='description[]']/li[2]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertSelectedIndexes</td>
+	<td>//select[@name='description[]']</td>
+	<td>3</td>
+</tr>
+<!--submenu hides on blur-->
+<tr>
+	<td>fireEvent</td>
+	<td>//div[@name='description[]']/span</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//div[@name='description[]']/ul/@class</td>
+	<td>*hidden</td>
+</tr>
+<!--check the third select widget including its filter-group (singleSelect)-->
+<tr>
+	<td>assertSelectedIndex</td>
+	<td>//select[@name='distance']</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@name='distance']/span</td>
+	<td>30km</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//div[@name='distance']/ul/li[3]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//ul[@name='distance']/li[3]@class</td>
+	<td>*active</td>
+</tr>
+<!--click around-->
+<tr>
+	<td>click</td>
+	<td>//div[@name='distance']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//div[@name='distance']@class</td>
+	<td>* focus</td>
+</tr>
+<!--click on the children-->
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//ul[@name='distance']@class</td>
+	<td>*hidden</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@name='distance']/ul/li[3]</td>
+	<td></td>
+</tr>
+<!--singleSelect hides submenu after click-->
+<tr>
+	<td>assertAttribute</td>
+	<td>//div[@name='distance']/ul/@class</td>
+	<td>*hidden</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//div[@name='distance']/ul/li[3]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@name='distance']/span</td>
+	<td>Afstand</td>
+</tr>
+<tr>
+	<td>assertNotSelectedIndex</td>
+	<td>//select[@name='distance']</td>
+	<td></td>
+</tr>
+<!--nothing selected so filter-group should be hidden-->
+<tr>
+	<td>assertAttribute</td>
+	<td>//ul[@name='distance']@class</td>
+	<td>*hidden</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//ul[@name='distance']/li[3]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@name='distance']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--singleSelect hides submenu after click-->
+<tr>
+	<td>assertAttribute</td>
+	<td>//div[@name='distance']/ul/@class</td>
+	<td>*hidden</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//div[@name='distance']/ul/li[1]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@name='distance']/span</td>
+	<td>10km</td>
+</tr>
+<tr>
+	<td>assertSelectedIndex</td>
+	<td>//select[@name='distance']</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//ul[@name='distance']@class</td>
+	<td>*hidden</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//ul[@name='distance']/li[1]@class</td>
+	<td>*active</td>
+</tr>
+<!--submenu hides on blur-->
+<tr>
+	<td>fireEvent</td>
+	<td>//div[@name='distance']/span</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//div[@name='distance']/ul/@class</td>
+	<td>*hidden</td>
+</tr>
+<!--click on last multiSelect filter-item-->
+<tr>
+	<td>click</td>
+	<td>//ul[@name='description[]']/li[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//ul[@name='description[]']/li[4]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertNotSelectedIndex</td>
+	<td>//select[@name='description[]']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//ul[@name='description[]']@class</td>
+	<td>*hidden</td>
+</tr>
+<!--click on singleSelect filter-item-->
+<tr>
+	<td>click</td>
+	<td>//ul[@name='distance']/li[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotAttribute</td>
+	<td>//ul[@name='distance']/li[1]@class</td>
+	<td>*active</td>
+</tr>
+<tr>
+	<td>assertNotSelectedIndex</td>
+	<td>//select[@name='distance']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAttribute</td>
+	<td>//ul[@name='distance']@class</td>
+	<td>*hidden</td>
+</tr>
+</tbody></table>
+</body>
+</html>

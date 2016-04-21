@@ -1,0 +1,293 @@
+//@widgetColor: rgb(0, 0, 0);
+@widgetColor: #4191ff;
+//@highlight: rgb(0, 118, 255);
+//@first-grad-hl: rgba(0, 118, 255, .4);
+@first-grad-hl: rgb(255, 0, 235);
+@first-grad: #E3E3E3;
+@second-grad: #fcfcfc;
+@third-grad: #f0f0f0;
+.linear-gradient(@first) {
+    /* The first declaration is for browsers that do not support linear gradients.
+    The second declaration is because WebKit based browsers haven't unprefixed it yet.
+    If you want to support legacy browsers, try http://www.colorzilla.com/gradient-editor/ */
+    background: @third-grad;
+    background: -webkit-gradient(linear, 0deg, @first, @second-grad 50%, @third-grad);
+    background: -webkit-linear-gradient(0deg, @first, @second-grad 50%, @third-grad);
+    background: -moz-linear-gradient(0deg, @first, @second-grad 50%, @third-grad);
+    background: -ms-linear-gradient(0deg, @first, @second-grad 50%, @third-grad);
+    background: -o-linear-gradient(0deg, @first, @second-grad 50%, @third-grad);
+    background: linear-gradient(0deg, @first, @second-grad 50%, @third-grad);
+}
+.border-radius(@radius) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+.box-shadow(@horizontal, @vertical, @blur @color) {
+    -webkit-box-shadow: @horizontal @vertical @blur @color;
+    -moz-box-shadow: @horizontal @vertical @blur @color;
+    box-shadow: @horizontal @vertical @blur @color;
+}
+.box-sizing() {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.right-after-all() {
+    background-color: @widgetColor;
+    -webkit-border-radius: 0 .1em .1em 0;
+    -moz-border-radius: 0 .1em .1em 0;
+    border-radius: 0 .1em .1em 0;
+    .box-sizing();
+    color: rgb(255, 255, 255);
+    height: 100%;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    z-index: 1;
+}
+//
+//
+.widget-container {
+    .linear-gradient(@first-grad);
+    border: .1em solid @widgetColor;
+    .border-radius(.4em);
+    .box-shadow(.1em, .1em, .2em, rgba(0, 0, 0, .6));
+    .box-sizing();
+    margin: 0 auto;
+    margin-top: 1em;
+    padding: 1em;
+    width: 890px;
+    //
+    // children
+    button[type=submit] {
+        .linear-gradient(@first-grad);
+        border: .1em solid @widgetColor;
+        .border-radius(.3em);
+        //
+        // pseudo
+        &:hover {
+            .linear-gradient(fadeout(@first-grad-hl, 80%));
+            .box-shadow(.2em, .2em, .4em, rgba(0, 0, 0, .8));
+        }
+    }
+}
+.widget-select {
+    .linear-gradient(@first-grad);
+    border: .1em solid @widgetColor;
+    .border-radius(.2em);
+    .box-shadow(.1em, .1em, .2em, rgba(0, 0, 0, .6));
+    .box-sizing();
+    display: inline-block;
+    line-height: normal;
+    margin: 0 .15em;
+    /* We need extra room for the down arrow we will add */
+    padding: .05em 2.5em .1em .5em;
+    position: relative;
+    //
+    // pseudo
+    &::after {
+        .right-after-all();
+        /* We use the unicode caracter U+25BC; see http://www.utf8-chartable.de */
+        content: '\25BC';
+        font-size: 1em;
+        line-height: 1.4em;
+        /* position the content */
+        padding: 0 .3em;
+    }
+    &:hover {
+        .linear-gradient(fadeout(@first-grad-hl, 80%));
+        .box-shadow(.2em, .2em, .4em, rgba(0, 0, 0, .8));
+    }
+    &:focus,
+    .focus {
+        .linear-gradient(fadeout(@first-grad-hl, 80%));
+        -webkit-box-shadow: 0 0 .2em .1em @first-grad-hl, .2em .2em .4em rgba(0, 0, 0, .8);
+        -moz-box-shadow: 0 0 .2em .1em @first-grad-hl, .2em .2em .4em rgba(0, 0, 0, .8);
+        box-shadow: 0 0 .2em .1em @first-grad-hl, .2em .2em .4em rgba(0, 0, 0, .8);
+    }
+}
+.widget-value {
+    /* Because the value can be wider than our widget, we have to make sure it will not
+     change the widget's width */
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    /* And if the content overflows, it's better to have a nice ellipsis. */
+    white-space: nowrap;
+    width: 100%;
+}
+.widget-dropdown {
+    background: #f0f0f0;
+    border: .1em solid @widgetColor;
+    .border-radius(.2em);
+    //box-shadow: 0;
+    //outline: none;
+    .box-sizing();
+    /* This will make sure the list of will be 
+        displayed below the value and out of the HTML flow */
+    left: 0;
+    /* this will reset the default style of the ul element */
+    list-style: none;
+    margin: 0;
+    /* edit these values to make the submenu 'float' */
+    margin-top: .5em;
+    /* In case the list is too long, its content will overflow vertically (scrollbar)
+        but never horizontally (because we haven't set a width, if it can't, the content will be truncated) */
+    max-height: 10.3em;
+    /* This will ensure that even if the values are smaller than the widget,
+        the list of options will be as large as the widget itself */
+    min-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    z-index: 2;
+    //
+    // children
+    &[class$='multiple'] {
+        .widget-dropdown-item {
+            &[class~='active'] {
+                padding-left: 1em;
+                padding-right: .5em;
+            }
+        }
+    }
+    .widget-dropdown-item {
+        white-space: nowrap;
+        padding: .2em;
+        padding-left: .5em;
+        padding-right: 1em;
+        width: 100%;
+        //
+        + .widget-dropdown-item {
+            border-top: .1em solid silver;
+            border-top: .1em solid rgba(0, 0, 0, .1);
+        }
+        //
+        &[class$='highlight'] {
+            background: fadeout(@first-grad-hl, 90%);
+        }
+        &[class$='active highlight'] {
+            background: fadeout(@first-grad-hl, 90%);
+        }
+        &[class$='active'] {
+            background: fadeout(@first-grad-hl, 80%);
+        }
+    }
+}
+.select-widget-filterbar {
+    background-color: white;
+    border: .1em solid silver;
+    border: .1em solid rgba(0, 0, 0, .3);
+    .border-radius(.4em);
+    margin-top: 1em;
+    padding: .4em;
+    //
+    // children
+}
+.widget-filter-group {
+    .border-radius(.4em);
+    .box-shadow(.1em, .1em, .2em, rgba(0, 0, 0, .6));
+    .box-sizing();
+    display: inline-block;
+    line-height: normal;
+    /* this will reset the default style of the ul element */
+    list-style: none;
+    margin: 0;
+    padding: .3em 0 0 .3em;
+    //
+    // children
+    &:not(: last-child) {
+        margin-right: 1em;
+    }
+    .active {
+        display: inline-block;
+    }
+}
+.widget-filter-item {
+    .linear-gradient(@first-grad);
+    border: .1em solid @widgetColor;
+    .border-radius(.2em);
+    .box-sizing();
+    .box-shadow(.1em, .1em, .2em, rgba(0, 0, 0, .6));
+    //border-width: .11em;
+    cursor: pointer;
+    display: none;
+    font-size: .9em;
+    margin: 0;
+    margin-right: .3em;
+    max-width: 6em;
+    overflow: hidden;
+    padding: .1em 1.8em .1em .4em;
+    /* This will create a positioning context for the ::after */
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /*	transition: box-shadow .1s linear 0s;*/
+    //
+    // pseudo
+    &::after {
+        .right-after-all();
+        content: '\2611';
+        font-size: 1.1em;
+        line-height: 1.3em;
+        /* position the content */
+        padding: 0 .3em;
+    }
+}
+.widget-input {
+    .linear-gradient(@first-grad);
+    border: .1em solid @widgetColor;
+    .border-radius(.2em);
+    .box-sizing();
+    display: inline-block;
+    width: 12em;
+    //
+    // pseudo
+    &[class$='focus'] {
+        background: white;
+        -webkit-box-shadow: 0 0 .2em .1em @first-grad-hl, .2em .2em .4em rgba(0, 0, 0, .8);
+        -moz-box-shadow: 0 0 .2em .1em @first-grad-hl, .2em .2em .4em rgba(0, 0, 0, .8);
+        box-shadow: 0 0 .2em .1em @first-grad-hl, .2em .2em .4em rgba(0, 0, 0, .8);
+    }
+    //
+    // children
+    > input[type=text] {
+        background-color: transparent;
+        border: 0;
+        .box-sizing();
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        padding-left: .4em;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    /* Style adjustments for viewports that meet the condition */
+    body {
+        background-color: yellow;
+    }
+    .widget-container {
+        width: 96%;
+        padding: .6em;
+    }
+    .widget-select,
+    .widget-input {
+        display: block;
+        margin: 0;
+        margin-bottom: .4em;
+        width: 100%;
+    }
+    .widget-filter-group {
+        display: block;
+        margin-bottom: .4em;
+    }
+    .widget-filter-group:not(:last-child) {
+        margin-right: 0;
+    }
+}
