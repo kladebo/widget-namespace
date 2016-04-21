@@ -1,0 +1,4 @@
+@import 'widget-config';
+.widget-input{
+    @include widget-base;
+}

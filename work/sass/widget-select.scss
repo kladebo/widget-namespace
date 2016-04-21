@@ -1,4 +1,8 @@
 @import 'widget-config';
-select {
-    border-color: $widget-base-color;
+.widget-select {
+    @include widget-base;
+    &:after {
+        @include widget-after(\25BC);
+        
+    }
 }

@@ -1,1 +1,27 @@
-$widget-base-color: red;
+$widget-base-color: #ff0000;
+$widget-shadow-color: #eb00ff;
+$widget-focus-color: #00ff14;
+@mixin widget-base {
+    $start: #e3e3e3;
+    $middle: #fcfcfc;
+    $end: #f0f0f0;
+    background: linear-gradient(0deg, $start, $middle 50%, $end);
+    border: .1em solid $widget-base-color;
+    border-radius: .2em;
+    box-shadow: .1em .1em .2em $widget-shadow-color;
+    display: inline-block;
+    line-height: normal;
+    margin: .2em 0 .4em .2em;
+    position: relative;
+    &:focus,
+    &.focus{
+        box-shadow: 0 0 .2em .1em $widget-focus-color;
+    }
+}
+@mixin widget-after ($content){
+    background-color: $widget-base-color;
+    border-radius: .1em;
+    content: $content;
+    position: absolute;
+    right: 0;
+}
