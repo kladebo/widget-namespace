@@ -69,6 +69,39 @@ module.exports = function (grunt) {
                 }
             }
         },
+        sass: {
+            dist: {
+                options: {
+                    sourcemap: 'none',
+                    style: 'nested' //Output style. Can be nested, compact, compressed, expanded
+                },
+                files: {
+                    'work/build/css/layout.css': 'work/sass/layout.scss'
+                }
+            }
+        },
+        postcss: {
+            options: {
+                //map: true, // inline sourcemaps 
+                // or 
+                map: {
+                    inline: false, // save all sourcemaps as separate files... 
+                    annotation: 'work/css/app/maps/' // ...to the specified directory 
+                },
+
+                processors: [
+                    require('pixrem')(), // add fallbacks for rem units 
+                        require('autoprefixer')({
+                        browsers: ['last 2 versions', 'Safari >= 5', '> 3% in NL']
+                    }), // add vendor prefixes 
+                    require('cssnano')() // minify the result 
+                ]
+            },
+            dist: {
+                src: 'work/build/css/layout.css',
+                dest: 'work/css/app/layout.min.css'
+            }
+        },
         cssmin: {
             options: {
                 //restructure: true,
@@ -149,12 +182,17 @@ module.exports = function (grunt) {
 
 
     // Load the plugin that provides the "uglify" task.
+
+    // npm install grunt-postcss pixrem autoprefixer cssnano --save-dev
+
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-sass'); //npm install grunt-contrib-sass --save-dev
+    grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-protractor-runner');
     grunt.loadNpmTasks('grunt-protractor-webdriver');
@@ -163,7 +201,7 @@ module.exports = function (grunt) {
 
     // Default task(s).
     grunt.registerTask('code', ['jshint', 'connect', 'qunit', 'clean:appjs', 'uglify', 'copy:appjs']);
-    grunt.registerTask('css', ['clean:css', 'less', 'cssmin', 'copy:css']);
+    grunt.registerTask('css', ['clean:css', 'less', 'cssmin', 'sass', 'postcss', 'copy:css']);
     grunt.registerTask('e2e', ['protractor:chrome']);
     grunt.registerTask('default', ['code', 'css', 'e2e']);
 
