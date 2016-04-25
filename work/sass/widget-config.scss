@@ -1,27 +1,50 @@
-$widget-base-color: #ff0000;
-$widget-shadow-color: #eb00ff;
-$widget-focus-color: #00ff14;
+$widget-base-color: #9d00ff;
+$widget-shadow: .1em .1em .2em hsla(0, 0%, 0%, 0.3);
+$widget-active-item-bgcolor: lighten($widget-base-color, 40%);
+$widget-hover-item-bgcolor: lighten($widget-base-color, 30%);
+$widget-focus-color: #00ff00;
+$widget-dropdown-bgcolor: #fff;
+$widget-after-face-color: #fff;
+$widget-padding: .1em .2em;
 @mixin widget-base {
     $start: #e3e3e3;
     $middle: #fcfcfc;
     $end: #f0f0f0;
     background: linear-gradient(0deg, $start, $middle 50%, $end);
-    border: .1em solid $widget-base-color;
+    border: .1em outset $widget-base-color;
     border-radius: .2em;
-    box-shadow: .1em .1em .2em $widget-shadow-color;
+    box-shadow: $widget-shadow;
+    box-sizing: border-box;
     display: inline-block;
+    font-size: 1em;
     line-height: normal;
     margin: .2em 0 .4em .2em;
     position: relative;
+    vertical-align: top;
     &:focus,
-    &.focus{
-        box-shadow: 0 0 .2em .1em $widget-focus-color;
+    &.focus {
+        box-shadow: 0 0 .3em 0 $widget-focus-color, $widget-shadow;
+        // removes blue line on chrome
+        outline: none;
+    }
+    * {
+        box-sizing: border-box;
+        line-height: normal;
     }
 }
-@mixin widget-after ($content){
+@mixin widget-after ($content) {
     background-color: $widget-base-color;
-    border-radius: .1em;
+    border: .1em solid $widget-base-color;
+    border-radius: 0 .1em .1em 0;
+    color: $widget-after-face-color;
     content: $content;
+    display: inline-block;
+    height: 101%;
+    line-height: 1;
+    
+    padding: $widget-padding;
     position: absolute;
     right: 0;
+    top: 0;
+    box-sizing: border-box;
 }

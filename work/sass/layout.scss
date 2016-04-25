@@ -4,5 +4,7 @@ body {
     color: $app-text-color;
     font-size: 1em;
 }
-@import 'widget-input';
-@import 'widget-select';
+select{
+    display: none;
+}
+@import 'widget-searchform';

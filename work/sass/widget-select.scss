@@ -1,8 +1,59 @@
 @import 'widget-config';
 .widget-select {
     @include widget-base;
-    &:after {
-        @include widget-after(\25BC);
-        
+    //padding-right: 1em;
+    cursor: default;
+    > ul {
+        background: $widget-dropdown-bgcolor;
+        border: .1em solid $widget-base-color;
+        border-radius: .2em;
+        box-shadow: $widget-shadow;
+        list-style-type: none;
+        margin: 0;
+        margin-top: .6em;
+        max-height: 10.3em;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: .2em;
+        position: absolute;
+        width: auto;
+        min-width: 100%;
+        z-index: 2;
+        li {
+            border-radius: .1em;
+            padding: $widget-padding;
+            // prevent hiding behind scrollbar
+            padding-right: 1.2em;
+            white-space: nowrap;
+            &.active {
+                background: $widget-active-item-bgcolor;
+            }
+            &.highlight {
+                background: $widget-hover-item-bgcolor;
+            }
+        }
+        &.multiple {
+            li {
+                &:before {
+                    content: '\2610';
+                    display: inline-block;
+                    margin-right: .3em;
+                    //width: 1em;
+                }
+                &.active:before {
+                    content: '\2611';
+                }
+            }
+        }
+    }
+    > span {
+        display: block;
+        padding: $widget-padding;
+        padding-left: .3em;
+        padding-right: 1.8em;
+        &:after {
+            @include widget-after('\25BC');
+        }
     }
 }
+

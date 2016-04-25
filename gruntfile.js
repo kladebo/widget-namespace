@@ -203,6 +203,6 @@ module.exports = function (grunt) {
     grunt.registerTask('code', ['jshint', 'connect', 'qunit', 'clean:appjs', 'uglify', 'copy:appjs']);
     grunt.registerTask('css', ['clean:css', 'less', 'cssmin', 'sass', 'postcss', 'copy:css']);
     grunt.registerTask('e2e', ['protractor:chrome']);
-    grunt.registerTask('default', ['code', 'css', 'e2e']);
+    grunt.registerTask('default', ['code', 'css']);
 
 };

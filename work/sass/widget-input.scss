@@ -1,4 +1,14 @@
 @import 'widget-config';
-.widget-input{
+.widget-input {
     @include widget-base;
+    width: 12em;
+    &.focus {
+        background: #fff;
+    }
+    input {
+        background-color: transparent;
+        border: 0;
+        padding: $widget-padding;
+        width: 100%;
+    }
 }
