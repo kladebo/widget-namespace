@@ -23,7 +23,7 @@ var Widget = function () {
             option: function (optionvalue) {
                 openDropdown();
 
-                return element.all(by.css('div.widget-select.focus li')).filter(function (elem, index) {
+                return element.all(by.css('div.widget-select.widget-select--focus li')).filter(function (elem, index) {
                     return elem.getText().then(function (text) {
                         return text === optionvalue;
                     });

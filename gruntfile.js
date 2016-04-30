@@ -18,8 +18,9 @@ module.exports = function (grunt) {
         connect: {
             server: {
                 options: {
-                    port: 8000,
-                    base: 'https:localhost/8000/'
+                    port: 8080,
+                    hostname: 'localhost',
+                    base: '.'
                 }
             }
         },
@@ -122,9 +123,11 @@ module.exports = function (grunt) {
             }
         },
         protractor_webdriver: {
-            options: {
-                // Task-specific options go here. 
-                command: 'webdriver-manager start'
+            all: {
+                options: {
+                    // Task-specific options go here. 
+                    command: 'webdriver-manager start'
+                }
             }
         },
         protractor: {
@@ -203,7 +206,7 @@ module.exports = function (grunt) {
     // Default task(s).
     grunt.registerTask('code', ['jshint', 'clean:appjs', 'uglify', 'copy:appjs', 'connect', 'qunit']);
     grunt.registerTask('css', ['clean:css', 'sass', 'postcss', 'copy:css']);
-    grunt.registerTask('e2e', ['protractor:chrome']);
+    grunt.registerTask('e2e', ['protractor_webdriver', 'protractor:chrome']);
     grunt.registerTask('default', ['css', 'code']);
 
 };
