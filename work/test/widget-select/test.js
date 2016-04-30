@@ -64,7 +64,7 @@ module('widget select draw', function (assert) {
 
         assert.deepEqual(w.guiDropDown.tagName, 'UL', 'guiDropDown.tagname is "UL"');
         assert.deepEqual(w.guiDropDown.getAttribute('role'), 'presentation', 'guiDropDown.role is "presentation"');
-        assert.deepEqual(w.guiDropDown.className, 'widget-dropdown multiple hidden', 'guiDropDown.className is "widget-dropdown multiple hidden"');
+        assert.deepEqual(w.guiDropDown.className, 'widget-select__dropdown multiple widget-select__dropdown--hidden', 'guiDropDown.className is "widget-select__dropdown multiple widget-select__dropdown--hidden"');
     });
     
     QUnit.test('widget-select.draw [single] ', function (assert) {
@@ -90,6 +90,6 @@ module('widget select draw', function (assert) {
 
         assert.deepEqual(w.guiDropDown.tagName, 'UL', 'guiDropDown.tagname is "UL"');
         assert.deepEqual(w.guiDropDown.getAttribute('role'), 'presentation', 'guiDropDown.role is "presentation"');
-        assert.deepEqual(w.guiDropDown.className, 'widget-dropdown hidden', 'guiDropDown.className is "widget-dropdown hidden"');
+        assert.deepEqual(w.guiDropDown.className, 'widget-select__dropdown widget-select__dropdown--hidden', 'guiDropDown.className is "widget-select__dropdown widget-select__dropdown--hidden"');
     });
 });

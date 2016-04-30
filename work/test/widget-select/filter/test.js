@@ -16,8 +16,8 @@ module('widget filter create', function (assert) {
         item.create(widget);
 
         var p = item.item.parentNode;
-        assert.deepEqual(p.getAttribute('name'), widget.native.name, 'widget-filter-group name ok');
-        assert.deepEqual(p.className, 'widget-filter-group', 'widget-filter-group class ok');
+        assert.deepEqual(p.getAttribute('name'), widget.native.name, 'widget-select__filter-group name ok');
+        assert.deepEqual(p.className, 'widget-select__filter-group', 'widget-select__filter-group class ok');
 
         assert.deepEqual(item.itemId, 0, 'itemId correct');
         assert.deepEqual(item.widget, widget, 'widget correct');
@@ -26,7 +26,7 @@ module('widget filter create', function (assert) {
         assert.deepEqual(item.item.tagName, 'LI', 'tagName correct');
         assert.deepEqual(item.item.textContent, '10km', 'textContent correct');
         assert.deepEqual(item.item.getAttribute('role'), 'option', 'item.role correct');
-        assert.deepEqual(item.item.className, 'widget-filter-item', 'item.className correct');
+        assert.deepEqual(item.item.className, 'widget-select__filter-item', 'item.className correct');
 
         item.create(widget);
         assert.deepEqual(item.itemId, 1, 'itemId correct');
@@ -36,7 +36,7 @@ module('widget filter create', function (assert) {
         item.create(widget);
         assert.deepEqual(item.itemId, 2, 'itemId correct');
         assert.deepEqual(item.widget.filterItems.length, 3, 'filterItems.length correct');
-        assert.deepEqual(item.item.className, 'widget-filter-item active', 'item.className correct');
+        assert.deepEqual(item.item.className, 'widget-select__filter-item widget-select__filter-item--active', 'item.className correct');
         assert.deepEqual(item.item.textContent, '30km', 'textContent correct');
 
     });

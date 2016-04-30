@@ -1,14 +1,28 @@
+/*------------------------------------*\
+    #SECTION-WIDGET-INPUT
+\*------------------------------------*/
+
 @import 'widget-config';
+
+/* ==========================================================================
+   Base-settings: 
+   ========================================================================== */
+
 .widget-input {
     @include widget-base;
     width: 12em;
     &.focus {
         background: #fff;
     }
-    input {
-        background-color: transparent;
-        border: 0;
-        padding: $widget-padding;
-        width: 100%;
-    }
+}
+
+/*
+ * HTML input element
+ */
+
+.widget-input__input {
+    background-color: transparent;
+    border: 0;
+    padding: $widget-padding;
+    width: 100%;
 }

@@ -13,7 +13,7 @@
 
         if (!this.widget.guiFilterBar) {
             this.widget.guiFilterBar = document.createDocumentFragment();
-            console.log('Please put a element on the page with \'select-widget-filterbar\' as className');
+            console.warn('Please put a element on the page with \'widget-select__filterbar\' as className');
         }
 
         if (!this.widget.filterItems) {
@@ -22,7 +22,7 @@
             this.widget.guiFilterGroup = document.createElement('ul');
             this.widget.guiFilterBar.appendChild(this.widget.guiFilterGroup);
             this.widget.guiFilterGroup.setAttribute('role', 'presentation');
-            this.widget.guiFilterGroup.className = 'widget-filter-group';
+            this.widget.guiFilterGroup.className = 'widget-select__filter-group';
             this.widget.guiFilterGroup.setAttribute('name', this.widget.native.name);
         }
 
@@ -33,18 +33,20 @@
     Filter.prototype.draw = function () {
         var widget = this.widget,
             filterId = this.itemId,
-            span;
+            textBox;
 
 
         widget.guiFilterGroup.appendChild(this.item);
 
-        span = document.createElement('span');
-        this.item.appendChild(span);
-        span.textContent = widget.native[filterId].value;
+        textBox = document.createElement('span');
+        this.item.appendChild(textBox);
+        textBox.className = 'widget-select__filter-item-textBox';
+        textBox.textContent = widget.native[filterId].value;
+        
         this.item.selected = widget.native[filterId].selected;
         this.item.setAttribute('tabIndex', 0);
         this.item.setAttribute('role', 'option');
-        this.item.className = 'widget-filter-item' + (this.item.selected ? ' active' : '');
+        this.item.className = 'widget-select__filter-item' + (this.item.selected ? ' widget-select__filter-item--active' : '');
 
 
         this.item.addEventListener('click', function (e) {
@@ -67,7 +69,7 @@
                 if (!item) {
                     return;
                 }
-                if (item.nextSibling && item.nextSibling.classList.contains('active')) {
+                if (item.nextSibling && item.nextSibling.classList.contains('widget-select__filter-item--active')) {
                     return item.nextSibling.focus();
                 }
                 if(item.nextSibling){

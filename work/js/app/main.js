@@ -14,9 +14,11 @@
 
         items = document.getElementsByTagName('input');
         for (i = 0, x = items.length; i < x; i += 1) {
-            widget = new WIDGET.TextBox();
-            widget.init(items[i]);
-            widget.draw();
+            if (items[i].type === 'text') {
+                widget = new WIDGET.TextBox();
+                widget.init(items[i]);
+                widget.draw();
+            }
         }
     });
 

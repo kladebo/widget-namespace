@@ -1,7 +1,13 @@
+/*------------------------------------*\
+    #SECTION-SEARCH-FORM
+\*------------------------------------*/
+
 @import 'widget-config';
-select {
-    display: none;
-}
+
+/* ==========================================================================
+   Visual container: to create the form outline
+   ========================================================================== */
+
 .widget-container {
     @include widget-base;
     display: block;
@@ -10,44 +16,20 @@ select {
     button[type=submit] {
         @include widget-base;
         background: $widget-base-color;
-        color: $widget-dropdown-bgcolor;
+        color: $widget-select__dropdown-bgcolor;
         padding: .2em .6em 0 .6em;
     }
     > * {
         padding: .6em;
     }
 }
-.select-widget-filterbar {
-    border-top: .1em solid $widget-base-color;
-    ul {
-        display: inline-block;
-        cursor: pointer;
-        margin: 0;
-        list-style-type: none;
-        padding: 0;
-        padding-right: .6em;
-        li {
-            @include widget-base;
-            font-size: .9em;
-            display: none;
-            max-width: 6em;
-            &.active {
-                display: inline-block;
-            }
-            &:after {
-                @include widget-after('\2611');
-            }
-            > span {
-                display: block;
-                overflow-x: hidden;
-                padding: $widget-padding;
-                padding-left: .3em;
-                padding-right: 1.6em;
-                text-overflow: ellipsis;
-                width: 100%;
-            }
-        }
-    }
+
+/*
+ * Hide HTML select 
+ */
+
+.widget-container select {
+    display: none;
 }
 @import 'widget-input';
 @import 'widget-select';

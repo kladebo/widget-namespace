@@ -1,11 +1,20 @@
+/*------------------------------------*\
+    #SECTION-WIDGET-CONFIG-FILE
+\*------------------------------------*/
+
 $widget-base-color: #9d00ff;
 $widget-shadow: .1em .1em .2em hsla(0, 0%, 0%, 0.3);
 $widget-active-item-bgcolor: lighten($widget-base-color, 40%);
 $widget-hover-item-bgcolor: lighten($widget-base-color, 30%);
 $widget-focus-color: #00ff00;
-$widget-dropdown-bgcolor: #fff;
+$widget-select__dropdown-bgcolor: #fff;
 $widget-after-face-color: #fff;
 $widget-padding: .1em .2em;
+
+/* ==========================================================================
+   Mixins: 
+   ========================================================================== */
+
 @mixin widget-base {
     $start: #e3e3e3;
     $middle: #fcfcfc;
@@ -41,7 +50,6 @@ $widget-padding: .1em .2em;
     display: inline-block;
     height: 101%;
     line-height: 1;
-    
     padding: $widget-padding;
     position: absolute;
     right: 0;

@@ -22,7 +22,7 @@ module('widget option create', function (assert) {
         assert.deepEqual(item.item.tagName, 'LI', 'tagName correct');
         assert.deepEqual(item.item.textContent, '10km', 'textContent correct');
         assert.deepEqual(item.item.getAttribute('role'), 'option', 'item.role correct');
-        assert.deepEqual(item.item.className, 'widget-dropdown-item', 'item.className correct');
+        assert.deepEqual(item.item.className, 'widget-select__dropdown-item', 'item.className correct');
         
         item.create(widget);
         assert.deepEqual(item.itemId, 1, 'itemId correct');
@@ -32,7 +32,7 @@ module('widget option create', function (assert) {
         item.create(widget);
         assert.deepEqual(item.itemId, 2, 'itemId correct');
         assert.deepEqual(item.widget.optionItems.length, 3, 'optionItems.length correct');
-        assert.deepEqual(item.item.className, 'widget-dropdown-item active', 'item.className correct');
+        assert.deepEqual(item.item.className, 'widget-select__dropdown-item widget-select__dropdown-item--active', 'item.className correct');
         assert.deepEqual(item.item.textContent, '30km', 'textContent correct');
         assert.deepEqual(widget.guiValue.textContent, '30km', 'widget.guiValue correct');
         

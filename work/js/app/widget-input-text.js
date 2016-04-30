@@ -14,6 +14,9 @@
         this.native.parentNode.insertBefore(this.widget, this.native.nextSibling);
         this.widget.appendChild(this.native);
         this.widget.className = 'widget-input';
+
+        this.native.setAttribute('autocomplete', 'off');
+        this.native.className = 'widget-input__input';
         this.native.addEventListener('focus', function () {
             this.parentNode.classList.add('focus');
         });

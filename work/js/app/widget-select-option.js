@@ -21,6 +21,8 @@
     Option.prototype.draw = function () {
         var widget = this.widget,
             optionId = this.itemId,
+            checkbox,
+            textbox,
             addHighlight,
             removeHighlight;
 
@@ -37,12 +39,38 @@
 
         widget.guiDropDown.appendChild(this.item);
 
-        this.item.textContent = widget.native[optionId].textContent;
+        
         this.item.selected = widget.native[optionId].selected;
         this.item.setAttribute('role', 'option');
-        this.item.className = 'widget-dropdown-item' + (this.item.selected ? ' active' : '');
+
+        if (widget.isMultiple) {
+            checkbox = document.createElement('input');
+            this.item.appendChild(checkbox);
+            checkbox.type = 'checkbox';
+            checkbox.className = 'widget-select__checkbox';
+            
+            checkbox.addEventListener('mousedown', function (e){
+                e.preventDefault();
+            });
+            
+            this.item.className = 'widget-select__dropdown-item--multiple';
+            if (this.item.selected) {
+                checkbox.checked = true;
+                this.item.classList.add('widget-select__dropdown-item--multiple--active');
+            }
+        } else {
+            this.item.className = 'widget-select__dropdown-item';
+            if (this.item.selected) {
+                this.item.classList.add('widget-select__dropdown-item--active');
+            }
+        }
+        textbox = document.createElement('span');
+        this.item.appendChild(textbox);
+        textbox.className = 'widget-select__item-textBox';
+        textbox.textContent = widget.native[optionId].textContent;
+        
         if (!widget.isMultiple && this.item.selected) {
-            widget.guiValue.textContent = this.item.textContent;
+            widget.guiValue.textContent = textbox.textContent;
         }
 
         this.item.addEventListener('click', function (e) {

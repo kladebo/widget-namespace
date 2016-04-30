@@ -41,7 +41,7 @@ module.exports = function (grunt) {
         uglify: {
             appjs: {
                 options: {
-                    // mangle: false,
+                    sourceMap: true,
                     preserveComments: false,
                     banner: '/*! main <%= grunt.template.today("yyyy-mm-dd") %> */\n'
                 },
@@ -53,6 +53,7 @@ module.exports = function (grunt) {
             },
             widgetjs: {
                 options: {
+                    sourceMap: true,
                     preserveComments: false,
                     banner: '/*! <%= pkg.description %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
                 },
@@ -200,9 +201,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy'); //npm install grunt-contrib-copy --save-dev
 
     // Default task(s).
-    grunt.registerTask('code', ['jshint', 'connect', 'qunit', 'clean:appjs', 'uglify', 'copy:appjs']);
-    grunt.registerTask('css', ['clean:css', 'less', 'cssmin', 'sass', 'postcss', 'copy:css']);
+    grunt.registerTask('code', ['jshint', 'clean:appjs', 'uglify', 'copy:appjs', 'connect', 'qunit']);
+    grunt.registerTask('css', ['clean:css', 'sass', 'postcss', 'copy:css']);
     grunt.registerTask('e2e', ['protractor:chrome']);
-    grunt.registerTask('default', ['code', 'css']);
+    grunt.registerTask('default', ['css', 'code']);
 
 };

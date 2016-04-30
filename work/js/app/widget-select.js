@@ -17,15 +17,15 @@
     hideDropDown = function () {
         Select.optionRemoveHighlight();
         delete Select.activeSelect.highlightId;
-        Select.activeSelect.guiDropDown.classList.add('hidden');
+        Select.activeSelect.guiDropDown.classList.add('widget-select__dropdown--hidden');
     };
 
     showDropDown = function () {
-        Select.activeSelect.guiDropDown.classList.remove('hidden');
+        Select.activeSelect.guiDropDown.classList.remove('widget-select__dropdown--hidden');
     };
 
     toggleDropDown = function () {
-        if (Select.activeSelect.guiDropDown.className.indexOf('hidden') >= 0) {
+        if (Select.activeSelect.guiDropDown.className.indexOf('widget-select__dropdown--hidden') >= 0) {
             showDropDown();
         } else {
             hideDropDown();
@@ -38,36 +38,42 @@
             widget = Select.activeSelect,
             widgetOption = widget.optionItems[widget.optionId],
             widgetFilter = widget.filterItems[widget.optionId];
-        // uses fallthrough!
-        switch (widget.isMultiple) {
-            case false:
-                hideDropDown();
-                if (widgetOption.classList.contains('active')) {
-                    widgetOption.classList.remove('active');
-                    widgetFilter.classList.remove('active');
-                    widget.guiValue.textContent = widget.title;
-                    break;
-                } else {
-                    for (i = 0, x = widget.optionItems.length; i < x; i += 1) {
-                        widget.optionItems[i].classList.remove('active');
-                        widget.filterItems[i].classList.remove('active');
-                    }
-                    widget.guiValue.textContent = widgetOption.textContent;
+
+        if (!widget.isMultiple) {
+            hideDropDown();
+
+            if (widgetOption.classList.contains('widget-select__dropdown-item--active')) {
+                widgetOption.classList.remove('widget-select__dropdown-item--active');
+                widgetFilter.classList.remove('widget-select__filter-item--active');
+                widget.guiValue.textContent = widget.title;
+            } else {
+                for (i = 0, x = widget.optionItems.length; i < x; i += 1) {
+                    widget.optionItems[i].classList.remove('widget-select__dropdown-item--active');
+                    widget.filterItems[i].classList.remove('widget-select__filter-item--active');
                 }
-                /* falls through */
-            case true:
-                widgetOption.classList.toggle('active');
-                widgetFilter.classList.toggle('active');
+                widgetOption.classList.add('widget-select__dropdown-item--active');
+                widgetFilter.classList.add('widget-select__filter-item--active');
+                widget.guiValue.textContent = widgetOption.textContent;
+            }
+        } else {
+            widgetOption.classList.toggle('widget-select__dropdown-item--multiple--active');
+            widgetFilter.classList.toggle('widget-select__filter-item--active');
+
+            if (widgetOption.classList.contains('widget-select__dropdown-item--multiple--active')) {
+                widgetOption.querySelector('input.widget-select__checkbox').checked = true;
+            } else {
+                widgetOption.querySelector('input.widget-select__checkbox').checked = false;
+            }
         }
         for (i = 0, x = widget.filterItems.length; i < x; i += 1) {
-            if (widget.filterItems[i].className.indexOf('active') >= 0) {
+            if (widget.filterItems[i].className.indexOf('widget-select__filter-item--active') >= 0) {
                 count += 1;
             }
         }
         if (count === 0) {
-            widget.guiFilterGroup.classList.add('hidden');
+            widget.guiFilterGroup.classList.add('widget-select__filter-group--hidden');
         } else {
-            widget.guiFilterGroup.classList.remove('hidden');
+            widget.guiFilterGroup.classList.remove('widget-select__filter-group--hidden');
         }
     };
 
@@ -127,18 +133,19 @@
         widget.gui.setAttribute('name', widget.name);
         widget.gui.title = widget.title;
 
-        widget.guiFilterBar = document.querySelector('.select-widget-filterbar');
+        widget.guiFilterBar = document.querySelector('.widget-select__filterbar');
 
         // setup the widgetValue
         widget.guiValue = document.createElement('span');
         widget.gui.appendChild(widget.guiValue);
+        widget.guiValue.className = 'widget-select__value';
         widget.guiValue.textContent = widget.isMultiple ? widget.title : '';
 
         // setup the widgetDropDown
         widget.guiDropDown = document.createElement('ul');
         widget.gui.appendChild(widget.guiDropDown);
         widget.guiDropDown.setAttribute('role', 'presentation');
-        widget.guiDropDown.className = 'widget-dropdown' + (widget.isMultiple ? ' multiple' : '') + ' hidden';
+        widget.guiDropDown.className = 'widget-select__dropdown' + (widget.isMultiple ? ' multiple' : '') + ' widget-select__dropdown--hidden';
 
         // setup the widgetOptions AND the widgetFilters
 
@@ -184,7 +191,7 @@
             } else if (e.keyCode === 38 || e.keyCode === 40) {
                 e.preventDefault();
 
-                if (widget.isMultiple && widget.guiDropDown.className.indexOf('hidden') >= 0) {
+                if (widget.isMultiple && widget.guiDropDown.className.indexOf('widget-select__dropdown--hidden') >= 0) {
                     return;
                 }
 
@@ -244,14 +251,14 @@
     Select.optionAddHighlight = function () {
         var highlightId = WIDGETS.Select.activeSelect.highlightId;
         if (typeof highlightId !== 'undefined') {
-            WIDGETS.Select.activeSelect.optionItems[highlightId].classList.add('highlight');
+            WIDGETS.Select.activeSelect.optionItems[highlightId].classList.add('widget-select__dropdown-item--highlight');
         }
     };
 
     Select.optionRemoveHighlight = function () {
         var highlightId = WIDGETS.Select.activeSelect.highlightId;
         if (typeof highlightId !== 'undefined') {
-            WIDGETS.Select.activeSelect.optionItems[highlightId].classList.remove('highlight');
+            WIDGETS.Select.activeSelect.optionItems[highlightId].classList.remove('widget-select__dropdown-item--highlight');
         }
     };
 

@@ -2,7 +2,7 @@
 'use strict';
 var WidgetPage = function () {
     this.get = function () {
-        browser.driver.get('http://klaas/klaas/widget_select/version03/');
+        browser.driver.get('http://klaas/klaas/widget_select/version03/www');
     };
 
 };
