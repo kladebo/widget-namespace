@@ -11,9 +11,14 @@
 .widget-input {
     @include widget-base;
     width: 12em;
-    &.focus {
-        background: #fff;
-    }
+}
+
+/*
+ * modifier
+ */
+
+.widget-input--focus {
+    @include widget--focus;
 }
 
 /*
@@ -25,4 +30,8 @@
     border: 0;
     padding: $widget-padding;
     width: 100%;
+}
+.widget-input__input:focus {
+    /* chrome issue */
+    outline: none;
 }

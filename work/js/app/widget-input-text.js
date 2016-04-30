@@ -18,10 +18,10 @@
         this.native.setAttribute('autocomplete', 'off');
         this.native.className = 'widget-input__input';
         this.native.addEventListener('focus', function () {
-            this.parentNode.classList.add('focus');
+            this.parentNode.classList.add('widget-input--focus');
         });
         this.native.addEventListener('blur', function () {
-            this.parentNode.classList.remove('focus');
+            this.parentNode.classList.remove('widget-input--focus');
         });
     };
 

@@ -14,6 +14,15 @@
     white-space: nowrap;
 }
 
+/*
+ * Modifiers
+ */
+
+.widget-select:focus,
+.widget-select--focus {
+    @include widget--focus;
+}
+
 /* ==========================================================================
    Visible value: which holds the arrow
    ========================================================================== */
@@ -49,7 +58,6 @@
     min-width: 100%;
     z-index: 2;
 }
-
 .widget-select__dropdown--hidden {
     display: none;
 }
@@ -60,9 +68,9 @@
 
 .widget-select__dropdown-item {
     border-radius: .1em;
-    padding: $widget-padding;
+    //padding: $widget-padding;
     /* prevent hiding behind scrollbar */
-    padding-right: 1.2em;
+    padding-right: 1em;
 }
 
 /*
@@ -80,19 +88,21 @@
 .widget-select__dropdown-item--multiple {
     @extend .widget-select__dropdown-item;
 }
-.widget-select__dropdown-item--multiple:before {
-    content: '\2610';
-    display: inline-block;
-    margin-right: .3em;
-}
 
 /*
  * Modifiers
  */
 
-.widget-select__dropdown-item--multiple--active {}
-.widget-select__dropdown-item--multiple--active:before {
-    content: '\2611';
+.widget-select__dropdown-item--multiple--active {
+    background: $widget-active-item-bgcolor;
+}
+.widget-select__checkbox {
+    vertical-align: middle;
+    margin-left: .3em;
+}
+.widget-select__item-textBox {
+    display: inline-block;
+    padding: .3em;
 }
 
 /* ==========================================================================

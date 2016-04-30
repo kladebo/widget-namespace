@@ -30,16 +30,16 @@ $widget-padding: .1em .2em;
     margin: .2em 0 .4em .2em;
     position: relative;
     vertical-align: top;
-    &:focus,
-    &.focus {
-        box-shadow: 0 0 .3em 0 $widget-focus-color, $widget-shadow;
-        // removes blue line on chrome
-        outline: none;
-    }
     * {
         box-sizing: border-box;
         line-height: normal;
     }
+}
+@mixin widget--focus {
+    background: #fff;
+    box-shadow: 0 0 .3em 0 $widget-focus-color, $widget-shadow;
+    // removes blue line on chrome
+    outline: none;
 }
 @mixin widget-after ($content) {
     background-color: $widget-base-color;

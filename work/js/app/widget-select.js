@@ -166,13 +166,13 @@
         });
 
         widget.gui.addEventListener('focus', function () {
-            this.classList.add('focus');
+            this.classList.add('widget-select--focus');
             WIDGETS.Select.activeSelect = widget;
         });
 
         // Each time the user click on a widget
         widget.gui.addEventListener('blur', function () {
-            this.classList.remove('focus');
+            this.classList.remove('widget-select--focus');
             hideDropDown();
         });
 

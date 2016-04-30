@@ -42,7 +42,7 @@
         this.item.appendChild(textBox);
         textBox.className = 'widget-select__filter-item-textBox';
         textBox.textContent = widget.native[filterId].value;
-        
+
         this.item.selected = widget.native[filterId].selected;
         this.item.setAttribute('tabIndex', 0);
         this.item.setAttribute('role', 'option');
@@ -72,9 +72,9 @@
                 if (item.nextSibling && item.nextSibling.classList.contains('widget-select__filter-item--active')) {
                     return item.nextSibling.focus();
                 }
-                if(item.nextSibling){
+                if (item.nextSibling) {
                     return activateSibling(item.nextSibling);
-                }else if(item.parentElement.nextSibling){
+                } else if (item.parentElement.nextSibling) {
                     console.log('parent has sibling');
                     // todo kdb -> skips the fist of the nextparent
                     return activateSibling(item.parentElement.nextSibling.children[0]);
